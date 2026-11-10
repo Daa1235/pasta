@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POKEMON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="Ptext">
+            <h1>Pokédex</h1>
+            <p>Find and discoscorver everything about Pokemons.</p>
+        </div>
+    </header>
+
+    <section class="Filter">
+        <label class="field grow">
+            <span>Pokémon</span>
+            <input id="search" type="search" placeholder="Name or number">
+        </label>
+
+        <label class="field">
+            <span>Generation</span>
+            <select id="gen">
+                <option value="all">All</option>
+                <option value="1">I · Kanto</option>
+                <option value="2">II · Johto</option>
+                <option value="3">III · Hoenn</option>
+                <option value="4">IV · Sinnoh</option>
+                <option value="5">V · Unova</option>
+                <option value="6">VI · Kalos</option>
+                <option value="7">VII · Alola</option>
+                <option value="8">VIII · Galar</option>
+                <option value="9">IX · Paldea</option>
+            </select>
+        </label>
+
+        <label class="field">
+            <span>Type</span>
+            <select id="type"><option value="all">All</option></select>
+        </label>
+    </section>
+
+    <main>
+        <div id="grid" aria-live="polite"></div>
+    </main>
+
+    <dialog id="info" aria-label="Pokémon details"></dialog>
+
+      <script src="script.js"></script>
+
+</body>
+</html>

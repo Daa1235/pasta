@@ -1,0 +1,25 @@
+body {
+      font-family: Arial;
+      text-align: center;
+      background: #eee;
+    }
+
+    #grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .card {
+      background: white;
+      width: 140px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .card img { width: 100%; }
+
+    dialog { text-align: center; }
+    dialog img { width: 200px; }
+    dialog p { margin: 5px 0; }
