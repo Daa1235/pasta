@@ -10,23 +10,24 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    
+    <header id="top">
         <div class="Ptext">
             <h1>Pokédex</h1>
-            <p>Find and discoscorver everything about Pokemons.</p>
+            <p>Find and discover everything about Pokemons.</p>
         </div>
     </header>
-
-    <section class="Filter">
+<nav aria-label="Pesquisa e filtros da Pokédex">
+    <section class="Filter" aria-label="Filtrar Pokémon">
         <label class="field grow">
             <span>Pokémon</span>
-            <input id="search" type="search" placeholder="Name or number">
+            <input id="search" type="search" placeholder="Nome ou número">
         </label>
 
         <label class="field">
-            <span>Generation</span>
+            <span>Geração</span>
             <select id="gen">
-                <option value="all">All</option>
+                <option value="all">Todas</option>
                 <option value="1">I · Kanto</option>
                 <option value="2">II · Johto</option>
                 <option value="3">III · Hoenn</option>
@@ -40,18 +41,34 @@
         </label>
 
         <label class="field">
-            <span>Type</span>
-            <select id="type"><option value="all">All</option></select>
+            <span>Tipo</span>
+            <select id="type"><option value="all">Todos</option></select>
         </label>
     </section>
-
+</nav>
     <main>
         <div id="grid" aria-live="polite"></div>
     </main>
 
     <dialog id="info" aria-label="Pokémon details"></dialog>
 
-      <script src="script.js"></script>
+    <a class="back-to-top" href="#top" aria-label="Voltar ao topo">↑</a>
 
+    <!-- Áudio oculto e em loop -->
+    <audio id="musica" src="m.mp3" autoplay loop></audio>
+
+    <script src="script.js"></script>
+    <script>
+        const musica = document.getElementById('musica');
+        musica.volume = 0.3;
+
+        // Tenta tocar imediatamente ao abrir a página
+        musica.play().catch(() => {
+            // Se o navegador bloquear o autoplay, toca no primeiro clique em qualquer sítio do site
+            document.addEventListener('click', () => {
+                musica.play();
+            }, { once: true });
+        });
+    </script>
 </body>
 </html>
