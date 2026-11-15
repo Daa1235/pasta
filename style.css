@@ -92,8 +92,8 @@ main {
   width: 140px;
   padding: 10px;
   border-radius: 5px;
-  background: white;
   cursor: pointer;
+  background: white;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 

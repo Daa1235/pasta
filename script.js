@@ -27,27 +27,6 @@ const typeTranslations = {
   steel: "aço",
   fairy: "fada"
 };
-const typeCardColors = {
-  normal: "#e5e5d7",
-  fire: "#f8d3c4",
-  water: "#cbdcf8",
-  electric: "#f7e9ae",
-  grass: "#d0e8d0",
-  ice: "#cce9ec",
-  fighting: "#f2cccc",
-  poison: "#e3d0eb",
-  ground: "#ead9c5",
-  flying: "#d7dcf3",
-  psychic: "#f3d0dc",
-  bug: "#e0e7c2",
-  rock: "#e4deca",
-  ghost: "#d9d3e8",
-  dragon: "#d8d1f2",
-  dark: "#d8d1cd",
-  steel: "#d5dce0",
-  fairy: "#f0d4e0"
-};
-
 // ===== 2. Page elements =====
 const grid = document.getElementById("grid");
 const searchInput = document.getElementById("search");
@@ -126,10 +105,6 @@ async function loadPokemonTypes(card) {
       .map(type => `<span class="type-badge type-${type}">${typeTranslations[type] || type}</span>`)
       .join("");
 
-    const colors = types.map(type => typeCardColors[type] || "#e5e5d7");
-    card.style.background = colors.length > 1
-      ? `linear-gradient(135deg, ${colors[0]} 50%, ${colors[1]} 50%)`
-      : colors[0];
   } catch (error) {
     console.error(`Could not load types for Pokémon ${id}:`, error);
     if (typesElement.isConnected) typesElement.textContent = "Tipos indisponíveis";
