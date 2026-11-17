@@ -151,9 +151,30 @@ main {
 .type-fairy { background: #bf608b; }
 
 header {
-    color: white;
+  color: white;
   background: #c62828;
   padding: 24px 16px;
+}
+
+.audio-toggle {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 2;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: #c62828;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.audio-toggle:hover {
+  transform: translateY(-4px);
+  background: #a91f1f;
 }
 
 header h1 {

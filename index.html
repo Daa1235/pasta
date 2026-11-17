@@ -52,22 +52,13 @@
 
     <dialog id="info" aria-label="Pokémon details"></dialog>
 
+    <button id="audio-toggle" class="audio-toggle" type="button" aria-pressed="false">
+        Mute
+    </button>
     <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
 
     <!-- Hidden audio loop -->
     <audio id="musica" src="m.mp3" loop autoplay></audio>
     <script src="script.js"></script>
-    <script>
-        const musica = document.getElementById('musica');
-        musica.volume = 0.3;
-
-        // Try to play immediately when the page opens
-        musica.play().catch(() => {
-            // If the browser blocks autoplay, it plays on the first click anywhere on the site
-            document.addEventListener('click', () => {
-                musica.play();
-            }, { once: true });
-        });
-    </script>
 </body>
 </html>

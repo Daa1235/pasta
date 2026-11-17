@@ -83,7 +83,7 @@ function renderPokemonCards() {
     .map((pokemon) => {
       const id = getIdFromUrl(pokemon.url);
       return `
-        <div class="card" data-pokemon-id="${id}" onclick="detalhes(${id})">
+        <div class="card" data-pokemon-id="${id}">
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png" alt="${pokemon.name}">
           <p>${pokemon.name}</p>
           <div class="pokemon-types" aria-label="Pokémon types">Loading types...</div>
@@ -275,7 +275,7 @@ async function showPokemonDetails(id) {
           <h2>${pokemon.name}</h2>
           <p class="pokemon-description"></p>
           <div class="pokemon-stats">${statsMarkup}</div>
-          <button type="button" onclick="info.close()">Close</button>
+          <button type="button" data-close-details>Close</button>
         </section>
       </div>`;
 
@@ -287,9 +287,59 @@ async function showPokemonDetails(id) {
   }
 }
 
-window.detalhes = showPokemonDetails;
-searchInput.addEventListener("input", render);
-generationSelect.addEventListener("change", handleGenerationChange);
-typeSelect.addEventListener("change", handleTypeChange);
+function handleGridClick(event) {
+  const card = event.target.closest(".card");
 
-loadFilters();
+  if (card && grid.contains(card)) {
+    showPokemonDetails(card.dataset.pokemonId);
+  }
+}
+
+function handleDetailsClick(event) {
+  if (event.target.closest("[data-close-details]")) {
+    document.getElementById("info").close();
+  }
+}
+
+function setupBackgroundMusic() {
+  const music = document.getElementById("musica");
+  const audioToggle = document.getElementById("audio-toggle");
+
+  if (!music || !audioToggle) return;
+
+  music.volume = 0.3;
+  audioToggle.addEventListener("click", () => {
+    music.muted = !music.muted;
+    audioToggle.textContent = music.muted ? "Unmute audio" : "Mute audio";
+    audioToggle.setAttribute("aria-pressed", String(music.muted));
+
+    if (!music.muted && music.paused) {
+      music.play().catch((error) => {
+        console.error("Could not play background music:", error);
+      });
+    }
+  });
+
+  music.play().catch(() => {
+    document.addEventListener("click", () => {
+      if (!music.muted) {
+        music.play().catch((error) => {
+          console.error("Could not play background music:", error);
+        });
+      }
+    }, { once: true });
+  });
+}
+
+function initializePokedex() {
+  searchInput.addEventListener("input", render);
+  generationSelect.addEventListener("change", handleGenerationChange);
+  typeSelect.addEventListener("change", handleTypeChange);
+  grid.addEventListener("click", handleGridClick);
+  document.getElementById("info").addEventListener("click", handleDetailsClick);
+
+  setupBackgroundMusic();
+  loadFilters();
+}
+
+initializePokedex();
