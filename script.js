@@ -49,7 +49,7 @@ async function getJson(url) {
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error(`Falha na requisição (${response.status}): ${url}`);
+    throw new Error(`Request failed (${response.status}): ${url}`);
   }
 
   return response.json();
@@ -58,8 +58,9 @@ async function getJson(url) {
 function cardMatchesFilters(pokemon) {
   const query = searchInput.value.trim().toLowerCase();
   const id = getIdFromUrl(pokemon.url);
+  const searchValue = pokemon.name || "";
 
-  const matchesQuery = !query || pokemon.name.includes(query) || id.includes(query);
+  const matchesQuery = !query || searchValue.includes(query) || id.includes(query);
   const matchesGeneration = !state.generationNames || state.generationNames.has(pokemon.name);
   const matchesType = !state.typeNames || state.typeNames.has(pokemon.name);
 
@@ -140,7 +141,7 @@ async function loadPokemonTypes(card) {
 
     typesElement.innerHTML = buildTypeBadges(types);
   } catch (error) {
-    console.error(`Could not load types for Pokémon ${id}:`, error);
+    console.error(`Could not load Pokémon types for ${id}:`, error);
 
     if (typesElement && typesElement.isConnected) {
       typesElement.textContent = "Types unavailable";
@@ -282,7 +283,7 @@ async function showPokemonDetails(id) {
     info.querySelector(".pokemon-description").textContent = getDescription(species);
     info.showModal();
   } catch (error) {
-    console.error("Could not load Pokémon details:", error);
+    console.error("Could not open Pokémon details:", error);
     grid.textContent = "Could not load Pokémon details. Please try again.";
   }
 }
