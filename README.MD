@@ -22,14 +22,6 @@
 
 ##  How it work?
 
-```bash
-git clone https://github.com/utilizador/projeto.git
-cd projeto
-npm install
-npm start
-```
-- Test test
-
 
 ##  Authors
 
