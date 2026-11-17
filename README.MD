@@ -41,16 +41,12 @@
 ##  How it work?
 
 ```bash
-async function getGenerationNames(generation) {
-  if (!generationCache.has(generation)) {
-    const data = await getJson(`${api}/generation/${generation}`);
-    generationCache.set(generation, new Set(data.pokemon_species.map(species => species.name)));
-  }
-  return generationCache.get(generation);
-}
-
+git clone https://github.com/utilizador/projeto.git
+cd projeto
+npm install
+npm start
 ```
-- 
+- Test test
 
 
 ##  Authors
