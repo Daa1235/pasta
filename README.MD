@@ -46,7 +46,7 @@ cd projeto
 npm install
 npm start
 ```
-- Test test
+- 
 
 
 ##  Authors
