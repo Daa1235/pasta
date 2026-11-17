@@ -30,7 +30,7 @@
 ## What it was used?
 - HTML,CSS;JAVASCRIPT
 - Pokémon API
-- source Press Start 2P
+- Textfont: Press Start 2P
 
 ## How to run it?
 - Just open the index.html, but it requires the internet connection to access the API
