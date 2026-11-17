@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="Screenshot" width="700">
+  <img src="image/c.png" alt="Screenshot" width="700">
 </p>
 
 <p align="center">
@@ -16,19 +16,41 @@
 
 ---
 
-##  Features
+##  Description
 
 - An interactive Pokédex where you can search for any Pokémon and view its type, stats, and image, with data loaded in real time from the PokéAPI.
+
+## Features
+- Search by name or number, updating as you type.
+- Filters by generation (I to IX) and by type, which can be combined with the search.
+- Cards featuring official imagery and their types.
+- “Back to top” button, fixed navbar, smooth animations.
+- Background music on a loop (volume 30%). If the browser blocks autoplay, it will play upon the first click.
+
+## What it was used?
+- HTML,CSS;JAVASCRIPT
+- Pokémon API
+- source Press Start 2P
+
+## How to run it?
+- Just open the index.html, but it requires the internet connection to access the API
+
+## Structure
+- index.html,style.css,script.js, m.mp3
 
 ##  How it work?
 
 ```bash
-git clone https://github.com/utilizador/projeto.git
-cd projeto
-npm install
-npm start
+async function getGenerationNames(generation) {
+  if (!generationCache.has(generation)) {
+    const data = await getJson(`${api}/generation/${generation}`);
+    generationCache.set(generation, new Set(data.pokemon_species.map(species => species.name)));
+  }
+  return generationCache.get(generation);
+}
+
 ```
-- Test test
+- 
 
 
 ##  Authors

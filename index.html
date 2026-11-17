@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,20 +14,20 @@
     <header id="top">
         <div class="Ptext">
             <h1>Pokédex</h1>
-            <p>Find and discover everything about Pokemons.</p>
+            <p>Find and discover everything about Pokémon.</p>
         </div>
     </header>
-<nav aria-label="Pesquisa e filtros da Pokédex">
-    <section class="Filter" aria-label="Filtrar Pokémon">
+<nav aria-label="Pokédex search and filters">
+    <section class="Filter" aria-label="Filter Pokémon">
         <label class="field grow">
             <span>Pokémon</span>
-            <input id="search" type="search" placeholder="Nome ou número">
+            <input id="search" type="search" placeholder="Name or number">
         </label>
 
         <label class="field">
-            <span>Geração</span>
+            <span>Generation</span>
             <select id="gen">
-                <option value="all">Todas</option>
+                <option value="all">All</option>
                 <option value="1">I · Kanto</option>
                 <option value="2">II · Johto</option>
                 <option value="3">III · Hoenn</option>
@@ -41,8 +41,8 @@
         </label>
 
         <label class="field">
-            <span>Tipo</span>
-            <select id="type"><option value="all">Todos</option></select>
+            <span>Type</span>
+            <select id="type"><option value="all">All</option></select>
         </label>
     </section>
 </nav>
@@ -52,18 +52,18 @@
 
     <dialog id="info" aria-label="Pokémon details"></dialog>
 
-    <a class="back-to-top" href="#top" aria-label="Voltar ao topo">↑</a>
+    <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
 
-    <!-- Áudio oculto e em loop -->
+    <!-- Hidden audio loop -->
     <audio id="musica" src="m.mp3" loop autoplay></audio>
     <script src="script.js"></script>
     <script>
         const musica = document.getElementById('musica');
         musica.volume = 0.3;
 
-        // Tenta tocar imediatamente ao abrir a página
+        // Try to play immediately when the page opens
         musica.play().catch(() => {
-            // Se o navegador bloquear o autoplay, toca no primeiro clique em qualquer sítio do site
+            // If the browser blocks autoplay, it plays on the first click anywhere on the site
             document.addEventListener('click', () => {
                 musica.play();
             }, { once: true });
